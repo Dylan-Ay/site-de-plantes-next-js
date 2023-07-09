@@ -20,7 +20,7 @@ export default function Home() {
             <Plant
               key={plant.id}
               img={`${plant.img}`}
-              button={<SeeMoreButton color="success">Voir plante</SeeMoreButton>}
+              link={<SeeMoreButton href={`/plant/${plant.id}`} color="success">Voir plante</SeeMoreButton>}
               category={plant.category}
               description={plant.description}
               name={plant.name}
