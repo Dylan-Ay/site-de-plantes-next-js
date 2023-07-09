@@ -4,7 +4,7 @@ import LikeButton from "./LikeButton";
 
 interface Props {
   img: string;
-  button: ReactNode;
+  link: ReactNode
   name: string;
   category: string;
   light: number;
@@ -21,7 +21,7 @@ const calculNbEmoji = (nb: number, emoji: string) => {
 }
 
 // Récupère les propriétés à partir des props ci-dessus
-const Plant = ({img, button, name, category, light, water, description}: Props) => {
+const Plant = ({img, link, name, category, light, water, description}: Props) => {
   return (
     <div className="col-6 mb-3 mb-sm-0">
         <div className="card" style={{minHeight: 428}}>
@@ -33,7 +33,7 @@ const Plant = ({img, button, name, category, light, water, description}: Props) 
             <div className="card-body">
                 <h5 className="card-title">{(name.charAt(0).toLocaleUpperCase() + name.slice(1))}</h5>
                 <p className="card-text">{description}</p>
-                {button}
+                {link}
                 <p></p>
             </div>
             <div className="card-footer bg-transparent">Eau: {calculNbEmoji(water, "💧")} Soleil: {calculNbEmoji(light, "☀️")}</div>
