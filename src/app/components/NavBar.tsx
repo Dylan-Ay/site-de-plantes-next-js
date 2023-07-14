@@ -3,8 +3,8 @@ const NavBar = () => {
       <>
         <nav className="navbar border-bottom border-bottom-dark navbar-expand-lg bg-body-tertiary">
           <div className="container">
-            <a className="navbar-brand" href="#">
-              Site de plantes
+            <a className="navbar-brand" href="/">
+              Site de Plantes
             </a>
             <button
               className="navbar-toggler"
