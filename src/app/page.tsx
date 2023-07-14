@@ -14,7 +14,7 @@ export default function Home() {
     <main>
       <NavBar></NavBar>
       <div className="container">
-        <h1 className="py-3 text-center">Liste des plantes</h1>
+        <h1 className="py-3 text-center">Liste des Plantes</h1>
         <div className="row g-3">
           {plants.map((plant) => (
             <PlantCard
