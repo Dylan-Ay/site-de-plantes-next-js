@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import LikeButton from "./LikeButton";
-
+import { calculNbEmoji } from "../utils";
 
 interface Props {
   img: string;
@@ -12,22 +12,14 @@ interface Props {
   description: string;
 }
 
-const calculNbEmoji = (nb: number, emoji: string) => {
-    const arr = [];
-    for (let index = 0; index < nb; index++) {
-        arr.push(emoji);
-    }
-    return arr;
-}
-
 // Récupère les propriétés à partir des props ci-dessus
 const PlantCard = ({img, link, name, category, light, water, description}: Props) => {
   return (
     <div className="col-6 mb-3 mb-sm-0">
-        <div className="card" style={{minHeight: 428}}>
+        <div className="card" style={{minHeight: 545}}>
             <div className="card-header bg-white d-flex">
-                <span className="col-6 text-secondary">Catégorie : {category}</span>
-                <span className="col-6 text-end"><LikeButton></LikeButton></span>
+                <span className="col-8 text-secondary">Catégorie : {category}</span>
+                <span className="col-4 text-end"><LikeButton></LikeButton></span>
             </div>
             <img src={img} className="card-img-top" alt={"plante " + name} />
             <div className="card-body">
