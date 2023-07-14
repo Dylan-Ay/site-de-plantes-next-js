@@ -17,9 +17,9 @@ export default function Page({ params }: { params: { id: string } }) {
         <PlantDetail
             img={plantData[0].img}
             name={plantData[0].name}
-            category=""
-            light={2}
-            water={3}
+            category={plantData[0].category}
+            light={plantData[0].light}
+            water={plantData[0].water}
             fullDescription={plantData[0].fullDescription}
         ></PlantDetail>
         </div>
