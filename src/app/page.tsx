@@ -1,11 +1,11 @@
 'use client'
 import 'bootstrap/dist/css/bootstrap.css'
-import styles from './page.module.css'
+import 'bootstrap/dist/js/bootstrap.bundle'
 import { useState } from 'react'
 import { plantList } from './components/data/listPlant'
 import NavBar from './components/NavBar'
-import Plant from './components/Plant'
 import SeeMoreButton from './components/SeeMoreButton'
+import PlantCard from './components/PlantCard'
 
 export default function Home() {
   const [plants, setPlant] = useState(plantList)
@@ -17,7 +17,7 @@ export default function Home() {
         <h1 className="py-3 text-center">Liste des plantes</h1>
         <div className="row g-3">
           {plants.map((plant) => (
-            <Plant
+            <PlantCard
               key={plant.id}
               img={`${plant.img}`}
               link={<SeeMoreButton href={`/plant/${plant.id}`} color="success">Voir plante</SeeMoreButton>}
@@ -26,7 +26,7 @@ export default function Home() {
               name={plant.name}
               light={plant.light}
               water={plant.water}
-            ></Plant>
+            ></PlantCard>
           ))}
         </div>
       </div>
