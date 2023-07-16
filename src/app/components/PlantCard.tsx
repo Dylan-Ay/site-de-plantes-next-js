@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import LikeButton from "./LikeButton";
-import { calculNbEmoji } from "../utils";
+import { calculNbEmoji, firstLetterToCapitalize } from "../utils";
 
 interface Props {
   img: string;
@@ -23,7 +23,7 @@ const PlantCard = ({img, link, name, category, light, water, description}: Props
             </div>
             <img src={img} className="card-img-top" alt={"plante " + name} />
             <div className="card-body">
-                <h5 className="card-title">{(name.charAt(0).toLocaleUpperCase() + name.slice(1))}</h5>
+                <h5 className="card-title">{firstLetterToCapitalize(name)}</h5>
                 <p className="card-text">{description}</p>
                 {link}
                 <p></p>

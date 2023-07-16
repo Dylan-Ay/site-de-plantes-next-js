@@ -1,4 +1,4 @@
-import { calculNbEmoji } from "../utils";
+import { calculNbEmoji, firstLetterToCapitalize } from "../utils";
 
 interface Props {
     img: string;
@@ -12,7 +12,7 @@ interface Props {
 function PlantDetail({img, name, category, light, water, fullDescription}: Props) {
   return (
     <section>
-        <h1 className="py-3 text-center">{(name.charAt(0).toLocaleUpperCase() + name.slice(1))}</h1>
+        <h1 className="py-3 text-">{firstLetterToCapitalize(name)}</h1>
         <img className="img-fluid" src={img} alt={"photo d'une plante " + name} />
         
 
