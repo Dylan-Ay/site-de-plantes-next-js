@@ -5,3 +5,7 @@ export const calculNbEmoji = (nb: number, emoji: string) => {
     }
     return arr;
 }
+
+export const firstLetterToCapitalize = (word: string) => {
+    return word.charAt(0).toLocaleUpperCase() + word.slice(1);
+}
