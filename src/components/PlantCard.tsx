@@ -13,7 +13,7 @@ interface Props {
 }
 
 // Récupère les propriétés à partir des props ci-dessus
-const PlantCard = ({img, link, name, category, light, water, description}: Props) => {
+function PlantCard ({img, link, name, category, light, water, description}: Props) {
   return (
     <div className="col-6 mb-3 mb-sm-0">
         <div className="card" style={{minHeight: 545}}>

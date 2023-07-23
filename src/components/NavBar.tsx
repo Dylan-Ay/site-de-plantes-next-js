@@ -1,4 +1,4 @@
-const NavBar = () => {
+function NavBar() {
     return (
       <header className="bg-white">
         <nav className="navbar border-bottom border-bottom-dark navbar-expand-lg bg-body-tertiary">

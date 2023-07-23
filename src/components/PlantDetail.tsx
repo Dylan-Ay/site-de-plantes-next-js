@@ -9,7 +9,7 @@ interface Props {
     fullDescription: string;
   }
 
-function PlantDetail({img, name, category, light, water, fullDescription}: Props) {
+function PlantDetail ({img, name, category, light, water, fullDescription}: Props) {
   return (
     <section>
         <h1 className="py-3 text-center">{firstLetterToCapitalize(name)}</h1>
