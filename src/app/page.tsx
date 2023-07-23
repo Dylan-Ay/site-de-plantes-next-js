@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
 import { plantList } from '@/components/data/listPlant'
-import NavBar from '@/components/NavBar'
 import SeeMoreButton from '@/components/SeeMoreButton'
 import PlantCard from '@/components/PlantCard'
 
@@ -10,7 +9,6 @@ export default function Home() {
   
   return (
     <main>
-      <NavBar></NavBar>
       <div className="container">
         <h1 className="py-3 text-center">Liste des Plantes</h1>
         <div className="row g-3">
