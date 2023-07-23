@@ -1,9 +1,9 @@
 'use client'
 import { useState } from 'react'
-import { plantList } from './components/data/listPlant'
-import NavBar from './components/NavBar'
-import SeeMoreButton from './components/SeeMoreButton'
-import PlantCard from './components/PlantCard'
+import { plantList } from '@/components/data/listPlant'
+import NavBar from '@/components/NavBar'
+import SeeMoreButton from '@/components/SeeMoreButton'
+import PlantCard from '@/components/PlantCard'
 
 export default function Home() {
   const [plants, setPlant] = useState(plantList)

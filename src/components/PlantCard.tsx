@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import LikeButton from "./LikeButton";
-import { calculNbEmoji, firstLetterToCapitalize } from "../utils";
+import { calculNbEmoji, firstLetterToCapitalize } from "@/app/utils";
 
 interface Props {
   img: string;

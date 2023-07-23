@@ -1,4 +1,4 @@
-import NavBar from "@/app/components/NavBar";
+import NavBar from "@/components/NavBar"
 
 export default function DashboardLayout({
     children, // will be a page or nested layout

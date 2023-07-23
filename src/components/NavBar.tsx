@@ -1,6 +1,6 @@
 const NavBar = () => {
     return (
-      <>
+      <header className="bg-white">
         <nav className="navbar border-bottom border-bottom-dark navbar-expand-lg bg-body-tertiary">
           <div className="container">
             <a className="navbar-brand" href="/">
@@ -33,7 +33,7 @@ const NavBar = () => {
             </div>
           </div>
         </nav>
-      </>
+      </header>
     );
   };
   

@@ -1,6 +1,6 @@
 "use client";
-import PlantDetail from "@/app/components/PlantDetail";
-import { plantList } from "@/app/components/data/listPlant";
+import PlantDetail from "@/components/PlantDetail";
+import { plantList } from "@/components/data/listPlant";
 import NotFound from "./not-found";
 import { firstLetterToCapitalize } from "@/app/utils";
 
