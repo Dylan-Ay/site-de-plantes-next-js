@@ -1,7 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.css';
-// import 'bootstrap/dist/js/bootstrap.bundle';
 import NavBar from "@/app/components/NavBar";
-
 
 export default function DashboardLayout({
     children, // will be a page or nested layout

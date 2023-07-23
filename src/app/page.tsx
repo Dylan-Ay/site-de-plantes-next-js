@@ -1,6 +1,4 @@
 'use client'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.bundle'
 import { useState } from 'react'
 import { plantList } from './components/data/listPlant'
 import NavBar from './components/NavBar'
