@@ -2,38 +2,37 @@ import PlantDetail from "@/components/PlantDetail";
 import { plantList } from "@/components/data/listPlant";
 import NotFound from "./not-found";
 import { firstLetterToCapitalize } from "@/app/utils";
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 
 // Dynamic title
 type Props = {
-  params: { id: string }
+  params: { slug: string }
 }
 export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
+  { params }: Props
 ): Promise<Metadata> {
 
   // read route params
-  const plantId = params.id;
+  const plantSlug = params.slug;
  
   // fetch data
-  const plantData = plantList.filter((plant) => plant.id === plantId);
+  const plantData = plantList.filter((plant) => plant.slug === plantSlug);
  
   return {
     title: firstLetterToCapitalize(plantData[0].name)
   }
 }
 
-export default function Page({ params }: { params: { id: string } }) {
-  const plantId = params.id;
-  const plantData = plantList.filter((plant) => plant.id === plantId);
+export default function Page({ params }: { params: { slug: string } }) {
+  const plantSlug = params.slug;
+  const plantData = plantList.filter((plant) => plant.slug === plantSlug);
 
   if (plantData.length === 0) {
     return NotFound();
   }
   // Récupère toutes les plantes de la même catégorie à part celle de la page
   const plantsByCategory = plantList.filter(
-    (plant) => plant.category === plantData[0].category && plant.id !== plantId
+    (plant) => plant.category === plantData[0].category && plant.id !== plantSlug
   );
 
   return (

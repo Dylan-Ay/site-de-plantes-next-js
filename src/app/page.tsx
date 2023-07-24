@@ -16,7 +16,7 @@ export default function Home() {
             <PlantCard
               key={plant.id}
               img={`${plant.img}`}
-              link={<SeeMoreButton href={`/plant/${plant.id}`} color="success">Voir plante</SeeMoreButton>}
+              link={<SeeMoreButton href={`/plant/${plant.slug}`} color="success">Voir plante</SeeMoreButton>}
               category={plant.category}
               description={plant.description}
               name={plant.name}

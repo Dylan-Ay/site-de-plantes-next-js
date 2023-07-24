@@ -1,6 +1,7 @@
 export const plantList = [
     {
       name: "monstera",
+      slug: "monstera",
       category: "classique",
       id: "1ed",
       isBestSale: true,
@@ -12,6 +13,7 @@ export const plantList = [
     },
     {
       name: "ficus lyrata",
+      slug: "ficus-lyrata",
       category: "classique",
       id: "2ab",
       light: 3,
@@ -22,6 +24,7 @@ export const plantList = [
     },
     {
       name: "pothos argenté",
+      slug: "pothos-argente",
       category: "classique",
       id: "3sd",
       light: 1,
@@ -42,6 +45,7 @@ export const plantList = [
     },
     {
       name: "olivier",
+      slug: "olivier",
       category: "extérieur",
       id: "5pl",
       light: 3,
@@ -52,6 +56,7 @@ export const plantList = [
     },
     {
       name: "géranium",
+      slug: "geranium",
       category: "extérieur",
       id: "6uo",
       light: 2,
@@ -62,6 +67,7 @@ export const plantList = [
     },
     {
       name: "basilique",
+      slug: "basilique",
       category: "extérieur",
       id: "7ie",
       isBestSale: true,
@@ -73,6 +79,7 @@ export const plantList = [
     },
     {
       name: "aloe",
+      slug: "aloe",
       category: "plante grasse",
       id: "8fp",
       light: 2,
@@ -83,6 +90,7 @@ export const plantList = [
     },
     {
       name: "succulente",
+      slug: "succulente",
       category: "plante grasse",
       id: "9vn",
       light: 2,

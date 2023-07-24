@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
 
-function LikeButton() {
+export default function LikeButton() {
   const [color, setColor] = useState("black");
 
   return (
@@ -21,5 +21,3 @@ function LikeButton() {
     </div>
   );
 }
-
-export default LikeButton;
