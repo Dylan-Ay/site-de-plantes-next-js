@@ -36,8 +36,8 @@ export default function Page({ params }: { params: { slug: string } }) {
   );
 
   return (
-    <main>
-      <div className="container mx-auto">
+    <main className="container mx-auto">
+      <section className="pb-9">
         <PlantDetail
           img={plantData[0].img}
           name={plantData[0].name}
@@ -46,24 +46,26 @@ export default function Page({ params }: { params: { slug: string } }) {
           water={plantData[0].water}
           fullDescription={plantData[0].fullDescription}
         ></PlantDetail>
+      </section>
 
-        <h3>Toutes les plantes de la catégorie "{plantData[0].category}" :</h3>
+      <section className="bg-white p-5">
+        <h3 className="pb-4 font-semibold text-center text-lg">Toutes les plantes de la catégorie "{plantData[0].category}" :</h3>
 
         {plantsByCategory.length <= 0 ? (
           "Aucune plante"
         ) : (
-          <section className="row">
+          <div className="flex gap-5">
             {plantsByCategory.map((plant) => (
-              <div className="col-3">
-                <a href={`/plant/${plant.id}`}>
-                  <img className="img-fluid" src={plant.img} alt={plant.name} />
+              <div className="w-3/12">
+                <a href={`/plant/${plant.slug}`}>
+                  <img src={plant.img} alt={plant.name} />
                   <span>{firstLetterToCapitalize(plant.name)}</span>
                 </a>
               </div>
             ))}
-          </section>
+          </div>
         )}
-      </div>
+      </section>
     </main>
   );
 }
