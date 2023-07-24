@@ -1,8 +1,28 @@
-"use client";
 import PlantDetail from "@/components/PlantDetail";
 import { plantList } from "@/components/data/listPlant";
 import NotFound from "./not-found";
 import { firstLetterToCapitalize } from "@/app/utils";
+import { Metadata, ResolvingMetadata } from 'next';
+
+// Dynamic title
+type Props = {
+  params: { id: string }
+}
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+
+  // read route params
+  const plantId = params.id;
+ 
+  // fetch data
+  const plantData = plantList.filter((plant) => plant.id === plantId);
+ 
+  return {
+    title: firstLetterToCapitalize(plantData[0].name)
+  }
+}
 
 export default function Page({ params }: { params: { id: string } }) {
   const plantId = params.id;
