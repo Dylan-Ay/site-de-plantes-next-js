@@ -20,7 +20,7 @@ function PlantCard ({img, link, name, category, light, water, description}: Prop
               <span className="text-stone-400">Catégorie : {category}</span>
               <span><LikeButton></LikeButton></span>
           </div>
-          <img src={img} alt={"plante " + name} />
+          <img height={320} width={320} src={img} alt={"plante " + name} />
           <div className="p-3">
               <h2 className="text-xl font-semibold mb-3">{firstLetterToCapitalize(name)}</h2>
               <p className="mb-3">{description}</p>

@@ -48,7 +48,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         ></PlantDetail>
       </section>
 
-      <section className="bg-white p-5">
+      <section className="bg-white p-5 rounded-md">
         <h3 className="pb-4 font-semibold text-center text-lg">Toutes les plantes de la catégorie "{plantData[0].category}" :</h3>
 
         {plantsByCategory.length <= 0 ? (
