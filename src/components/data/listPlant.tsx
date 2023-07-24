@@ -35,6 +35,7 @@ export const plantList = [
     },
     {
       name: "yucca",
+      slug: "yucca",
       category: "classique",
       id: "4kk",
       light: 3,
