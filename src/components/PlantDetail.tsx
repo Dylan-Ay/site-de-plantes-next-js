@@ -12,7 +12,7 @@ interface Props {
 function PlantDetail ({img, name, category, light, water, fullDescription}: Props) {
   return (
     <section>
-        <h1 className="py-3 text-center">{firstLetterToCapitalize(name)}</h1>
+        <h1 className="py-10 text-5xl text-center">{firstLetterToCapitalize(name)}</h1>
         <img className="img-fluid" src={img} alt={"photo d'une plante " + name} />
         
 

@@ -9,14 +9,14 @@ export default function Home() {
   
   return (
     <main>
-      <div className="container">
-        <h1 className="py-3 text-center">Liste des Plantes</h1>
-        <div className="row g-3">
+      <div className="container mx-auto pb-9">
+        <h1 className="py-10 text-5xl text-center">Liste des Plantes</h1>
+        <div className="flex flex-wrap justify-evenly gap-1 gap-y-10">
           {plants.map((plant) => (
             <PlantCard
               key={plant.id}
               img={`${plant.img}`}
-              link={<SeeMoreButton href={`/plant/${plant.slug}`} color="success">Voir plante</SeeMoreButton>}
+              link={<SeeMoreButton href={`/plant/${plant.slug}`}>Voir plante</SeeMoreButton>}
               category={plant.category}
               description={plant.description}
               name={plant.name}

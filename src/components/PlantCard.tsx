@@ -15,21 +15,18 @@ interface Props {
 // Récupère les propriétés à partir des props ci-dessus
 function PlantCard ({img, link, name, category, light, water, description}: Props) {
   return (
-    <div className="col-6 mb-3 mb-sm-0">
-        <div className="card" style={{minHeight: 545}}>
-            <div className="card-header bg-white d-flex">
-                <span className="col-8 text-secondary">Catégorie : {category}</span>
-                <span className="col-4 text-end"><LikeButton></LikeButton></span>
-            </div>
-            <img src={img} className="card-img-top" alt={"plante " + name} />
-            <div className="card-body">
-                <h5 className="card-title">{firstLetterToCapitalize(name)}</h5>
-                <p className="card-text">{description}</p>
-                {link}
-                <p></p>
-            </div>
-            <div className="card-footer bg-transparent">Eau: {calculNbEmoji(water, "💧")} Soleil: {calculNbEmoji(light, "☀️")}</div>
-        </div>
+    <div className="w-80 bg-white rounded-md" style={{minHeight: 545}} >
+          <div className="flex justify-between p-3">
+              <span className="text-stone-400">Catégorie : {category}</span>
+              <span><LikeButton></LikeButton></span>
+          </div>
+          <img src={img} alt={"plante " + name} />
+          <div className="p-3">
+              <h2 className="text-xl font-semibold mb-3">{firstLetterToCapitalize(name)}</h2>
+              <p className="mb-3">{description}</p>
+              {link}
+          </div>
+          <div className="p-3">Eau: {calculNbEmoji(water, "💧")} Soleil: {calculNbEmoji(light, "☀️")}</div>
     </div>
   );
 };

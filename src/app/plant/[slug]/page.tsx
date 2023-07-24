@@ -37,7 +37,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   return (
     <main>
-      <div className="container">
+      <div className="container mx-auto">
         <PlantDetail
           img={plantData[0].img}
           name={plantData[0].name}
