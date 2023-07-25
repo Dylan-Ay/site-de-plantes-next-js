@@ -9,7 +9,7 @@ interface Props {
 function SeeMoreButton ({ children, href }: Props) {
   if (href) {
     return (
-      <Link href={href} passHref className={"px-4 py-2 rounded font-semibold text-sm bg-green-600 text-white shadow-sm"}>{children}</Link>
+      <Link href={href} passHref className={"px-4 py-2 rounded font-semibold text-sm bg-green-600 text-white shadow-sm hover:bg-green-700"}>{children}</Link>
     )
   }
 };
