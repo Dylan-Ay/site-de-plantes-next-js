@@ -12,8 +12,8 @@ interface Props {
 export default function PlantDetail ({img, name, category, light, water, fullDescription}: Props) {
   return (
     <section>
-        <h1 className="py-10 text-5xl text-center">{firstLetterToCapitalize(name)}</h1>
-        <div className="w-11/12 md:w-9/12 lg:w-7/12 mx-auto bg-white p-5 rounded-md">
+        <div className="w-11/12 md:w-9/12 lg:w-7/12 mx-auto bg-white p-5 rounded-md mt-10">
+          <h1 className="pb-4 text-5xl text-center">{firstLetterToCapitalize(name)}</h1>
           <img width={557} height={557} className="mx-auto" src={img} alt={"photo d'une plante " + name} />
           
           <h2 className="pt-6 pb-2 font-semibold text-xl">Description :</h2>
