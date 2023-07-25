@@ -18,6 +18,7 @@ export default function Home() {
               img={`${plant.img}`}
               link={<SeeMoreButton href={`/plant/${plant.slug}`}>Voir plante</SeeMoreButton>}
               category={plant.category}
+              slug={plant.slug}
               description={plant.description}
               name={plant.name}
               light={plant.light}
