@@ -54,9 +54,9 @@ export default function Page({ params }: { params: { slug: string } }) {
         {plantsByCategory.length <= 0 ? (
           "Aucune plante"
         ) : (
-          <div className="flex gap-5">
+          <div className="flex flex-wrap gap-5 justify-center">
             {plantsByCategory.map((plant) => (
-              <div className="w-3/12">
+              <div className="w-5/12 md:w-4/12 lg:w-3/12 xl:w-2/12 hover:opacity-75 transition-opacity">
                 <a href={`/plant/${plant.slug}`}>
                   <img src={plant.img} alt={plant.name} />
                   <span>{firstLetterToCapitalize(plant.name)}</span>
