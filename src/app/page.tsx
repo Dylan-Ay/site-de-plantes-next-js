@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { plantList } from '@/components/data/listPlant'
 import SeeMoreButton from '@/components/SeeMoreButton'
 import PlantCard from '@/components/PlantCard'
+import DropdownFilter from '@/components/DropdownFilter'
 
 export default function Home() {
   const [plants, setPlants] = useState(plantList);
@@ -16,8 +17,7 @@ export default function Home() {
   // Ajout de la catégorie "Toutes" à la liste
   plantsCategories.unshift('Toutes');
     
-  const handleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const category = event.target.value;
+  const handleFilter = (category: string) => {
 
     if (category === "Toutes") {
       setPlants(plantsCopied);
@@ -32,13 +32,8 @@ export default function Home() {
     <main>
       <div className="container mx-auto pb-9">
         <h1 className="py-10 text-5xl text-center">Liste des Plantes</h1>
-        <div>
-          {plantsCategories.map((category) => 
-            <>
-              <label key={category} htmlFor="filter">{category}</label>
-              <input type="radio" name="filter" value={category} onChange={handleFilter} />
-            </>
-          )}
+        <div className='flex justify-end'>
+          <DropdownFilter categories={plantsCategories} handleFilter={handleFilter}></DropdownFilter>
         </div>
         <div className="flex flex-wrap justify-center gap-10">
           {plants.map((plant) => (
