@@ -24,11 +24,12 @@ export default function Home() {
   }
 
   // Permet d'appliquer le filtre sur la liste de plantes par une certaine propriété
-  const applyFilter = (elementsArray: Array<any>, keyValue: string | number, filteredKeyValue : string | number) => {
+  const applyFilter = (elementsArray: Array<any>, keyValue: string, filteredKeyValue : string | number) => {
     const filteredPlants = elementsArray.filter((plant) => plant[keyValue] === filteredKeyValue) 
 
     return filteredPlants;
   }
+
   // Création des tableaux filtrés
   const plantsCategories = createArrayOfFilterable(plantsCopied, 'category', 'Toutes');
   const plantsWaterNeed = createArrayOfFilterable(plantsCopied, 'water', 'Tous', true);
