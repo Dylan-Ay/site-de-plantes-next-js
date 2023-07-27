@@ -49,14 +49,14 @@ export default function Page({ params }: { params: { slug: string } }) {
       </section>
 
       <section className="bg-white p-5 rounded-md">
-        <h3 className="pb-4 font-semibold text-center text-lg">Toutes les plantes de la catégorie "{plantData[0].category}" :</h3>
+        <h3 className="pb-4 font-semibold text-center text-lg">Quelques plantes de la catégorie "{plantData[0].category}" :</h3>
 
         {plantsByCategory.length <= 0 ? (
           "Aucune plante"
         ) : (
           <div className="flex flex-wrap gap-5 justify-center">
-            {plantsByCategory.map((plant) => (
-              <div className="w-5/12 md:w-4/12 lg:w-3/12 xl:w-2/12 hover:opacity-75 transition-opacity flex flex-col">
+            {plantsByCategory.slice(0,5).map((plant) => (
+              <div className="w-5/12 sm:w-4/12 md:w-3/12 lg:w-2/12 hover:opacity-75 transition-opacity flex flex-col">
                 <a className="flex-1" href={`/plant/${plant.slug}`}>
                   <img className="h-full" src={plant.img} alt={plant.name} />
                 </a>
