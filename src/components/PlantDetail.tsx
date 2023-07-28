@@ -21,8 +21,8 @@ export default function PlantDetail ({img, name, category, light, water, fullDes
 
           <h3 className="font-semibold text-lg pb-2">Caractéristiques :</h3>
           <ul className="leading-7">
-            <li>Besoin en eau: {calculNbEmoji(water, "💧")}</li>
-            <li>Besoin en lumière: {calculNbEmoji(light, "☀️")}</li>
+            <li>Arrosage: {calculNbEmoji(water, "💧")}</li>
+            <li>Exposition: {calculNbEmoji(light, "☀️")}</li>
             <li>Catégorie: {category}</li>
           </ul>
         </div>
