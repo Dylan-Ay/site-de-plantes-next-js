@@ -4,9 +4,13 @@ import { plantList } from '@/components/data/listPlant'
 import SeeMoreButton from '@/components/SeeMoreButton'
 import PlantCard from '@/components/PlantCard'
 import DropdownFilter from '@/components/DropdownFilter'
+import ActiveFilter from '@/components/ActiveFilter'
 
 export default function Home() {
   const [plants, setPlants] = useState(plantList);
+  const resetPlantsList = () => {
+    setPlants(plantList);
+  }
   
   // Copie du tableau de plantes
   const plantsCopied = [...plantList];
@@ -33,9 +37,17 @@ export default function Home() {
   // Création des tableaux filtrés
   const plantsCategories = createArrayOfFilterable(plantsCopied, 'category', 'Toutes');
   const plantsWaterNeed = createArrayOfFilterable(plantsCopied, 'water', 'Tous', true);
+
+  // Créations des states pour les filtres actifs
+  const [filterValue, setFilterValue] = useState<string | number | null>(null);
+  const [filterTitle, setFilterTitle] = useState<string | null>(null);
+  const [isFilterActive, setIsFilterActive] = useState<boolean>(false);
   
-  // Element d'écoute sur le fitre
+  // Element d'écoute sur le titre
   const handleFilter = (value: string | number, keyValue: string) => {
+    
+    setFilterValue(value);
+    setIsFilterActive(true);
 
     if (value === "Toutes" || value === "Tous") {
       setPlants(plantsCopied);
@@ -43,10 +55,12 @@ export default function Home() {
       switch (keyValue) {
         case 'water':
           setPlants(applyFilter(plantsCopied, 'water', value));
+          setFilterTitle('Besoin en Eau');
           break;
   
         case 'category':
           setPlants(applyFilter(plantsCopied, 'category', value));
+          setFilterTitle('Catégories');
           break;
 
         default:
@@ -57,15 +71,22 @@ export default function Home() {
   }
 
   return (
-    <main>
-      <div className="container mx-auto pb-9">
+    <main className='container mx-auto pb-9'>
         <h1 className="py-10 text-5xl text-center">Liste des Plantes</h1>
-        <div className='flex px-8 justify-start mb-12 items-center gap-5'>
-          <span>Filtrer par :</span>
-          <DropdownFilter keyValue='category' filterTitle='Catégories' elementsList={plantsCategories} handleFilter={handleFilter}></DropdownFilter>
-          <DropdownFilter keyValue='water' filterTitle='Besoin en eau' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
-        </div>
-        <div className="flex flex-wrap justify-center gap-10">
+
+        <section className='bg-white rounded-md'>
+          <div className='flex px-8 justify-start items-center py-5 gap-5'>
+            <span>Filtrer par :</span>
+            <DropdownFilter keyValue='category' filterTitle='Catégories' elementsList={plantsCategories} handleFilter={handleFilter}></DropdownFilter>
+            <DropdownFilter keyValue='water' filterTitle='Besoin en eau' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
+          </div>
+          <div className='flex px-8 mb-12 items-center gap-5 pb-5'>
+            <span>Filtres actifs :</span>
+            { isFilterActive && <ActiveFilter resetFilter={setIsFilterActive} resetPlantsList={resetPlantsList} filterValue={filterValue} filterTitle={filterTitle} ></ActiveFilter>}
+          </div>
+        </section>
+
+        <section className="flex flex-wrap justify-center gap-10">
           {plants.map((plant) => (
             <PlantCard
               key={plant.id}
@@ -79,8 +100,7 @@ export default function Home() {
               water={plant.water}
             ></PlantCard>
           ))}
-        </div>
-      </div>
+        </section>
     </main>
   )
 }
