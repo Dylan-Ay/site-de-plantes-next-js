@@ -8,16 +8,18 @@ interface Props {
   filterTitle: string | null;
   resetFilter: Dispatch<SetStateAction<boolean>>
   resetPlantsList: Dispatch<SetStateAction<void>>;
+  getKeyValue: string;
 }
 
 
-export default function ActiveFilter({filterValue, filterTitle, resetFilter, resetPlantsList}: Props) {
+export default function ActiveFilter({filterValue, filterTitle, resetFilter, resetPlantsList, getKeyValue}: Props) {
     return (
       <>
         <span
           className="inline-flex items-center gap-x-1.5 rounded-full bg-gray-100 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm focus-visible:outline-offset-1 ring-1 ring-inset ring-gray-300"
         >
-          {filterTitle}: {typeof(filterValue) === 'number' ? convertNumberToText(filterValue) : filterValue}
+          
+          {filterTitle}: {typeof(filterValue) === 'number' ? convertNumberToText(filterValue, getKeyValue) : filterValue}
           <button
             type="button"
             className="inline-flex rounded-full p-1 text-gray-900 hover:bg-gray-300"
