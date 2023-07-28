@@ -11,7 +11,7 @@ interface Props {
 }
 
 
-export default function ActiveFilters({filterValue, filterTitle, resetFilter, resetPlantsList}: Props) {
+export default function ActiveFilter({filterValue, filterTitle, resetFilter, resetPlantsList}: Props) {
     return (
         <>
           <span
