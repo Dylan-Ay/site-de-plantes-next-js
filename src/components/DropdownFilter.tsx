@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { firstLetterToCapitalize } from "@/app/utils";
+import { firstLetterToCapitalize, convertNumberToText } from "@/app/utils";
 
 interface Props {
   elementsList: any[];
@@ -48,7 +48,7 @@ export default function DropdownFilter({ keyValue, filterTitle, elementsList, ha
                       "block px-4 py-2 text-sm"
                     )}
                   >
-                    {typeof(value) === "string" ? firstLetterToCapitalize(value) : value }
+                    {typeof(value) === "string" ? firstLetterToCapitalize(value) : convertNumberToText(value) }
                   </span>
                 )}
               </Menu.Item>
