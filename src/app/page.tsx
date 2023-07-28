@@ -37,6 +37,7 @@ export default function Home() {
   // Création des tableaux filtrés
   const plantsCategories = createArrayOfFilterable(plantsCopied, 'category', 'Toutes');
   const plantsWaterNeed = createArrayOfFilterable(plantsCopied, 'water', 'Tous', true);
+  const plantsSunNeed = createArrayOfFilterable(plantsCopied, 'light', 'Tous', true);
 
   // Créations des states pour les filtres actifs
   const [filterValue, setFilterValue] = useState<string | number | null>(null);
@@ -63,6 +64,11 @@ export default function Home() {
           setFilterTitle('Catégories');
           break;
 
+        case 'light':
+          setPlants(applyFilter(plantsCopied, 'light', value));
+          setFilterTitle('Besoin en Soleil');
+          break;
+
         default:
           setPlants(plantsCopied);
           break;
@@ -78,11 +84,12 @@ export default function Home() {
           <div className='flex px-8 justify-start items-center py-5 gap-5'>
             <span>Filtrer par :</span>
             <DropdownFilter keyValue='category' filterTitle='Catégories' elementsList={plantsCategories} handleFilter={handleFilter}></DropdownFilter>
-            <DropdownFilter keyValue='water' filterTitle='Besoin en eau' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
+            <DropdownFilter keyValue='water' filterTitle='Besoin en Eau' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
+            <DropdownFilter keyValue='light' filterTitle='Besoin en Soleil' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
           </div>
           <div className='flex px-8 mb-12 items-center gap-5 pb-5'>
             <span>Filtres actifs :</span>
-            { isFilterActive && <ActiveFilter resetFilter={setIsFilterActive} resetPlantsList={resetPlantsList} filterValue={filterValue} filterTitle={filterTitle} ></ActiveFilter>}
+            {isFilterActive && <ActiveFilter resetFilter={setIsFilterActive} resetPlantsList={resetPlantsList} filterValue={filterValue} filterTitle={filterTitle} ></ActiveFilter>}
           </div>
         </section>
 
