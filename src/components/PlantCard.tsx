@@ -18,7 +18,7 @@ function PlantCard ({img, link, name, category, slug, light, water, description}
   return (
     <div className="w-80 bg-white rounded-md" style={{minHeight: 545}} >
           <div className="flex justify-between p-3">
-              <span className="text-stone-400">Catégorie : {category}</span>
+              <span className="text-stone-500">Catégorie : {category}</span>
               <span><LikeButton></LikeButton></span>
           </div>
           <a href={`/plant/${slug}`}>
