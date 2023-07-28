@@ -5,6 +5,7 @@ import SeeMoreButton from '@/components/SeeMoreButton'
 import PlantCard from '@/components/PlantCard'
 import DropdownFilter from '@/components/DropdownFilter'
 import ActiveFilter from '@/components/ActiveFilter'
+import SelectSort from '@/components/SelectSort'
 
 export default function Home() {
   const [plants, setPlants] = useState(plantList);
@@ -37,36 +38,38 @@ export default function Home() {
   // Création des tableaux filtrés
   const plantsCategories = createArrayOfFilterable(plantsCopied, 'category', 'Toutes');
   const plantsWaterNeed = createArrayOfFilterable(plantsCopied, 'water', 'Tous', true);
-  const plantsSunNeed = createArrayOfFilterable(plantsCopied, 'light', 'Tous', true);
+  const plantsLightNeed = createArrayOfFilterable(plantsCopied, 'light', 'Tous', true);
 
   // Créations des states pour les filtres actifs
   const [filterValue, setFilterValue] = useState<string | number | null>(null);
   const [filterTitle, setFilterTitle] = useState<string | null>(null);
   const [isFilterActive, setIsFilterActive] = useState<boolean>(false);
+  const [getKeyValue, setKeyValue] = useState<string>('');
   
   // Element d'écoute sur le titre
   const handleFilter = (value: string | number, keyValue: string) => {
     
     setFilterValue(value);
     setIsFilterActive(true);
+    setKeyValue(keyValue);
 
     if (value === "Toutes" || value === "Tous") {
       setPlants(plantsCopied);
     }else{
       switch (keyValue) {
         case 'water':
-          setPlants(applyFilter(plantsCopied, 'water', value));
-          setFilterTitle('Besoin en Eau');
+          setPlants(applyFilter(plantsCopied, keyValue, value));
+          setFilterTitle('Arrosage');
           break;
   
         case 'category':
-          setPlants(applyFilter(plantsCopied, 'category', value));
+          setPlants(applyFilter(plantsCopied, keyValue, value));
           setFilterTitle('Catégories');
           break;
 
         case 'light':
-          setPlants(applyFilter(plantsCopied, 'light', value));
-          setFilterTitle('Besoin en Soleil');
+          setPlants(applyFilter(plantsCopied, keyValue, value));
+          setFilterTitle('Exposition');
           break;
 
         default:
@@ -80,16 +83,19 @@ export default function Home() {
     <main className='container mx-auto pb-9'>
         <h1 className="py-10 text-5xl text-center">Liste des Plantes</h1>
 
-        <section className='bg-white rounded-md'>
-          <div className='flex px-8 justify-start items-center py-5 gap-5'>
+        <section className='bg-white rounded-md mb-12'>
+          <div className='flex px-8 items-center gap-5 pt-5 pb-4'>
+            <span>Trier par :</span>
+            <SelectSort></SelectSort>
+          </div>
+          <div className='flex px-8 justify-start items-center pt-5 pb-4 gap-5'>
             <span>Filtrer par :</span>
             <DropdownFilter keyValue='category' filterTitle='Catégories' elementsList={plantsCategories} handleFilter={handleFilter}></DropdownFilter>
-            <DropdownFilter keyValue='water' filterTitle='Besoin en Eau' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
-            <DropdownFilter keyValue='light' filterTitle='Besoin en Soleil' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
+            <DropdownFilter keyValue='water' filterTitle='Arrosage' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
+            <DropdownFilter keyValue='light' filterTitle='Exposition' elementsList={plantsLightNeed} handleFilter={handleFilter}></DropdownFilter>
           </div>
-          <div className='flex px-8 mb-12 items-center gap-5 pb-5'>
-            <span>Filtres actifs :</span>
-            {isFilterActive && <ActiveFilter resetFilter={setIsFilterActive} resetPlantsList={resetPlantsList} filterValue={filterValue} filterTitle={filterTitle} ></ActiveFilter>}
+          <div className='flex px-8 items-center gap-5 pb-4 h-16'>
+            {isFilterActive && <ActiveFilter resetFilter={setIsFilterActive} resetPlantsList={resetPlantsList} filterValue={filterValue} filterTitle={filterTitle} getKeyValue={getKeyValue}  ></ActiveFilter>}
           </div>
         </section>
 
