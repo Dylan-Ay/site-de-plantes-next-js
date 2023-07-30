@@ -48,13 +48,14 @@ export default function Home() {
   
   // Récupère du composant DropDownFilter la clé et la valeur à partir desquels appliquer le filtre
   const handleFilter = (value: string | number, keyValue: string) => {
-    
-    setFilterValue(value);
-    setIsFilterActive(true);
-    setKeyValue(keyValue);
+
+      setFilterValue(value);
+      setIsFilterActive(true);
+      setKeyValue(keyValue);
 
     if (value === "Toutes" || value === "Tous") {
       setPlants(plantsCopied);
+      setIsFilterActive(false);
     }else{
       switch (keyValue) {
         case 'water':
