@@ -7,8 +7,9 @@ interface Props {
 }
 
 const sortType = [
-  { id: 1, name: "Popularité" },
+  { id: 1, name: "Récent" },
   { id: 2, name: "Nom" },
+  { id: 3, name: "Popularité"}
 ];
 
 function classNames(...classes: any[]) {
