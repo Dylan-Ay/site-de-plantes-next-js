@@ -32,7 +32,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   }
   // Récupère toutes les plantes de la même catégorie à part celle de la page
   const plantsByCategory = plantList.filter(
-    (plant) => plant.category === plantData[0].category && plant.id !== plantSlug
+    (plant) => plant.category === plantData[0].category && plant.slug !== plantSlug
   );
 
   return (
@@ -49,7 +49,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       </section>
 
       <section className="bg-white p-5 rounded-md">
-        <h3 className="pb-4 font-semibold text-center text-lg">Quelques plantes de la catégorie "{plantData[0].category}" :</h3>
+        <h3 className="pb-4 font-semibold text-center text-lg">Quelques plantes de la catégorie "{firstLetterToCapitalize(plantData[0].category)}" :</h3>
 
         {plantsByCategory.length <= 0 ? (
           "Aucune plante"
