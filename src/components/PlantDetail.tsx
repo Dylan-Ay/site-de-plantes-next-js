@@ -23,7 +23,7 @@ export default function PlantDetail ({img, name, category, light, water, fullDes
           <ul className="leading-7">
             <li>Arrosage: {calculNbEmoji(water, "💧")}</li>
             <li>Exposition: {calculNbEmoji(light, "☀️")}</li>
-            <li>Catégorie: {category}</li>
+            <li>Catégorie: {firstLetterToCapitalize(category)}</li>
           </ul>
         </div>
     </section>
