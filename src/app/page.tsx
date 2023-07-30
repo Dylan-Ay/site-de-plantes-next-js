@@ -8,7 +8,7 @@ import ActiveFilter from '@/components/ActiveFilter'
 import SelectSort from '@/components/SelectSort'
 
 export default function Home() {
-  const [plants, setPlants] = useState(plantList);
+  const [plants, setPlants] = useState(plantList.sort((a, b) => (a.id < b.id) ? 1 : -1));
   const resetPlantsList = () => {
     setPlants(plantList);
   }
@@ -83,9 +83,11 @@ export default function Home() {
     if (value === "Popularité") {
       const plantsByPopularity = plantsCopied.sort((a, b) => (a.isBestSale < b.isBestSale) ? 1 : -1);
       setPlants(plantsByPopularity);
-    }else{
+    }else if (value === "Nom") {
       const plantsByName = plantsCopied.sort((a, b) => (a.name > b.name) ? 1 : -1);
       setPlants(plantsByName);
+    }else{
+      setPlants(plantList.sort((a, b) => (a.id < b.id) ? 1 : -1));
     }
   }
 
