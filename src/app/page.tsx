@@ -46,7 +46,7 @@ export default function Home() {
   const [isFilterActive, setIsFilterActive] = useState<boolean>(false);
   const [getKeyValue, setKeyValue] = useState<string>('');
   
-  // Element d'écoute sur le titre
+  // Récupère du composant DropDownFilter la clé et la valeur à partir desquels appliquer le filtre
   const handleFilter = (value: string | number, keyValue: string) => {
     
     setFilterValue(value);
@@ -78,15 +78,25 @@ export default function Home() {
       } 
     }
   }
+  // Récupère du composant SelectSort la valeur au clique de la liste déroulante
+  const handleSort = (value: string) => {
+    if (value === "Popularité") {
+      const plantsByPopularity = plantsCopied.sort((a, b) => (a.isBestSale < b.isBestSale) ? 1 : -1);
+      setPlants(plantsByPopularity);
+    }else{
+      const plantsByName = plantsCopied.sort((a, b) => (a.name > b.name) ? 1 : -1);
+      setPlants(plantsByName);
+    }
+  }
 
   return (
     <main className='container mx-auto pb-9'>
         <h1 className="py-10 text-5xl text-center">Liste des Plantes</h1>
 
         <section className='bg-white rounded-md mb-12'>
-          <div className='flex px-8 items-center gap-5 pt-5 pb-4'>
+          <div className='flex px-8 items-center gap-7 pt-5 pb-4'>
             <span>Trier par :</span>
-            <SelectSort></SelectSort>
+            <SelectSort handleSort={handleSort}></SelectSort>
           </div>
           <div className='flex px-8 justify-start items-center pt-5 pb-4 gap-5'>
             <span>Filtrer par :</span>
