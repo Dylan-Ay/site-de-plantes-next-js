@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { plantList } from '@/components/data/listPlant'
 import SeeMoreButton from '@/components/SeeMoreButton'
 import PlantCard from '@/components/PlantCard'
@@ -12,6 +12,12 @@ export default function Home() {
   const resetPlantsList = () => {
     setPlants(plantList);
   }
+  const [resultNumber, setResultNumber] = useState(plantList.length);
+
+  // Met à jour le nombre de résultats à chaque fois que plants change.
+  useEffect(() => {
+    setResultNumber(plants.length);  
+  }, [plants]);
   
   // Copie du tableau de plantes
   const plantsCopied = [...plantList];
@@ -31,7 +37,6 @@ export default function Home() {
   // Permet d'appliquer le filtre sur la liste de plantes par une certaine propriété
   const applyFilter = (elementsArray: Array<any>, keyValue: string, filteredKeyValue : string | number) => {
     const filteredPlants = elementsArray.filter((plant) => plant[keyValue] === filteredKeyValue) 
-
     return filteredPlants;
   }
 
@@ -107,8 +112,11 @@ export default function Home() {
             <DropdownFilter keyValue='water' filterTitle='Arrosage' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
             <DropdownFilter keyValue='light' filterTitle='Exposition' elementsList={plantsLightNeed} handleFilter={handleFilter}></DropdownFilter>
           </div>
-          <div className='flex px-8 items-center gap-5 pb-4 h-16'>
+          <div className='flex px-8 items-center gap-5 pb-4 h-16 justify-between'>
             {isFilterActive && <ActiveFilter resetFilter={setIsFilterActive} resetPlantsList={resetPlantsList} filterValue={filterValue} filterTitle={filterTitle} getKeyValue={getKeyValue}  ></ActiveFilter>}
+            <div className='justify-self-end'>
+              Nombre de résultats : {resultNumber}
+            </div>
           </div>
         </section>
 
