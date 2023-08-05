@@ -144,7 +144,7 @@ export default function Home() {
     <main className='container mx-auto pb-9'>
         <h1 className="py-10 text-5xl text-center">Liste des Plantes</h1>
         <section className='bg-white rounded-md mb-12 px-8 mx-auto max-w-[1041px]'>
-          <div className='flex items-center gap-7 pt-4'>
+          <div className='flex items-center gap-7 pt-4 pb-2'>
             <span>Trier par :</span>
             <SelectSort handleSort={handleSort}></SelectSort>
           </div>
