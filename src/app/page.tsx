@@ -6,6 +6,7 @@ import PlantCard from '@/components/PlantCard'
 import DropdownFilter from '@/components/DropdownFilter'
 import ActiveFilter from '@/components/ActiveFilter'
 import SelectSort from '@/components/SelectSort'
+import FilterAndSortButton from '@/components/FilterAndSortButton'
 
 export default function Home() {
   type Plant = {
@@ -139,25 +140,30 @@ export default function Home() {
     }
     setActiveSort(value);
   };
-
+  // Gère l'affichage du menu de tri/filtre
+  const [filterSortMenuOpen, setFilterSortMenuOpen] = useState(false);
+  
   return (
     <main className='container mx-auto pb-9'>
         <h1 className="py-10 text-5xl text-center">Liste des Plantes</h1>
-        <section className='bg-white rounded-md mb-12 px-8 mx-auto max-w-[1041px]'>
-          <div className='flex items-center gap-7 pt-4 pb-2'>
-            <span>Trier par :</span>
-            <SelectSort handleSort={handleSort}></SelectSort>
-          </div>
-          <div className='flex justify-start sm:items-center flex-col sm:flex-row py-3 gap-5'>
-            <span>Filtrer par :</span>
-            <DropdownFilter keyValue='category' filterTitle='Catégories' elementsList={plantsCategories} handleFilter={handleFilter}></DropdownFilter>
-            <DropdownFilter keyValue='water' filterTitle='Arrosage' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
-            <DropdownFilter keyValue='light' filterTitle='Exposition' elementsList={plantsLightNeed} handleFilter={handleFilter}></DropdownFilter>
-          </div>
-          <div className='flex items-center gap-5 pb-4 h-16 justify-between'>
-            {isFilterActive && <ActiveFilter resetFilter={setIsFilterActive} resetPlantsList={resetPlantsList} filterValue={filterValue} filterTitle={filterTitle} getKeyValue={getKeyValue}  ></ActiveFilter>}
-            <div className='justify-self-end'>
-              Nombre de résultats : {resultNumber}
+        <section className='bg-white md:bg-white rounded-md mb-12 px-8 mx-auto max-w-fit md:max-w-[1041px]'>
+          {<FilterAndSortButton setFilterSortMenuOpen={setFilterSortMenuOpen} resultNumber={resultNumber}/>}
+          <div className={filterSortMenuOpen ? 'block bg-white rounded-md' : 'hidden md:block'}>
+            <div className='flex items-center gap-7 pt-4 pb-2'>
+              <span>Trier par :</span>
+              <SelectSort handleSort={handleSort}></SelectSort>
+            </div>
+            <div className='flex justify-start sm:items-center flex-col sm:flex-row py-3 gap-5'>
+              <span>Filtrer par :</span>
+              <DropdownFilter keyValue='category' filterTitle='Catégories' elementsList={plantsCategories} handleFilter={handleFilter}></DropdownFilter>
+              <DropdownFilter keyValue='water' filterTitle='Arrosage' elementsList={plantsWaterNeed} handleFilter={handleFilter}></DropdownFilter>
+              <DropdownFilter keyValue='light' filterTitle='Exposition' elementsList={plantsLightNeed} handleFilter={handleFilter}></DropdownFilter>
+            </div>
+            <div className={filterSortMenuOpen ? 'flex items-center gap-5 pb-4 justify-between' : 'flex items-center gap-5 pb-4 justify-between'}>
+              {isFilterActive && <ActiveFilter resetFilter={setIsFilterActive} resetPlantsList={resetPlantsList} filterValue={filterValue} filterTitle={filterTitle} getKeyValue={getKeyValue}  ></ActiveFilter>}
+              <div className='justify-self-end hidden md:block'>
+                Nombre de résultats : {resultNumber}
+              </div>
             </div>
           </div>
         </section>
