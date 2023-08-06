@@ -25,7 +25,7 @@ export default function Home() {
   const [plants, setPlants] = useState(plantList.sort((a, b) => (a.id < b.id) ? 1 : -1));
   const plantsCopied = [...plantList];
   const resetPlantsList = () => {
-    applyActiveSort(plantsCopied, activeSort);
+    applyActiveSort([...plantsCopied], activeSort);
     setFilteredPlants(plantsCopied);
   }
   const [resultNumber, setResultNumber] = useState(plantList.length);
