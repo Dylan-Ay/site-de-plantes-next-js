@@ -2,12 +2,12 @@ import Link from 'next/link'
  
 export default function NotFound() {
   return (
-    <div>
-      <h2>Element introuvable</h2>
+    <main className='text-center mt-20 text-lg'>
+      <h2>Page introuvable - 404</h2>
       <p>L'élément n'existe pas ou a été déplacé.</p>
       <p>
-        Revenir vers l'<Link href="/">Accueil</Link>
+      <Link className='font-semibold' href="/">Revenir à l'Accueil</Link>
       </p>
-    </div>
+    </main>
   )
 }
