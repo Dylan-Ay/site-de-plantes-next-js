@@ -91,7 +91,7 @@ export default function Home() {
   const [filterTitle, setFilterTitle] = useState<string | null>(null);
   const [isFilterActive, setIsFilterActive] = useState<boolean>(false);
   const [getKeyValue, setKeyValue] = useState<string>('');
-  const [activeSort, setActiveSort] = useState<string>('');
+  const [activeSort, setActiveSort] = useState<string>('Récent');
   
   // Récupère du composant DropDownFilter la clé et la valeur à partir desquels appliquer le filtre
   const handleFilter = (value: string | number, keyValue: string) => {
@@ -147,7 +147,7 @@ export default function Home() {
     <main className='container mx-auto pb-9'>
         <h1 className="py-10 text-5xl text-center">Liste des Plantes</h1>
         <section className='bg-white md:bg-white rounded-md mb-12 px-8 mx-auto max-w-fit md:max-w-[1041px]'>
-          {<FilterAndSortButton setFilterSortMenuOpen={setFilterSortMenuOpen} resultNumber={resultNumber}/>}
+          {<FilterAndSortButton setFilterSortMenuOpen={setFilterSortMenuOpen} resultNumber={resultNumber} filterSortMenuOpen={filterSortMenuOpen}/>}
           <div className={filterSortMenuOpen ? 'block bg-white rounded-md' : 'hidden md:block'}>
             <div className='flex items-center gap-7 pt-4 pb-2'>
               <span>Trier par :</span>
