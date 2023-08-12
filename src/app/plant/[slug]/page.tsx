@@ -14,13 +14,18 @@ export async function generateMetadata(
 
   // read route params
   const plantSlug = params.slug;
- 
+
   // fetch data
   const plantData = plantList.filter((plant) => plant.slug === plantSlug);
- 
-  return {
-    title: firstLetterToCapitalize(plantData[0].name)
+
+  if (plantData.length === 0) {
+    return {
+      title: "Page introuvable - 404"
+    }
   }
+    return {
+      title: firstLetterToCapitalize(plantData[0].name)
+    }
 }
 
 export default function Page({ params }: { params: { slug: string } }) {
