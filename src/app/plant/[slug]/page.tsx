@@ -1,7 +1,7 @@
 import PlantDetail from "@/components/PlantDetail";
 import { plantList } from "@/components/data/listPlant";
 import NotFound from "./not-found";
-import { firstLetterToCapitalize } from "@/app/utils";
+import { firstLetterToCapitalize } from "@/app/utils/general";
 import { Metadata } from 'next';
 
 // Dynamic title

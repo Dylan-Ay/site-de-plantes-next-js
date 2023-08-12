@@ -20,7 +20,6 @@ function FilterAndSortButton({setFilterSortMenuOpen, resultNumber, filterSortMen
         <ChevronDownIcon className={`h-5 w-5 ease-out duration-300 ${filterSortMenuOpen ? 'rotate-180' : ''}`}></ChevronDownIcon>
       </button>
       <span>{resultNumber} résultats</span>
-      
     </div>
   )
 }

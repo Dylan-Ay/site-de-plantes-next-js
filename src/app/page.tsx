@@ -7,25 +7,15 @@ import DropdownFilter from '@/components/DropdownFilter'
 import ActiveFilter from '@/components/ActiveFilter'
 import SelectSort from '@/components/SelectSort'
 import FilterAndSortButton from '@/components/FilterAndSortButton'
+import { Plant } from './types/plantTypes'
+import { createArrayOfFilterable, getSortedPlants, applyFilter } from './utils/plantUtils';
 
 export default function Home() {
-  type Plant = {
-    name: string;
-    slug: string;
-    category: string;
-    id: number;
-    isBestSale: boolean;
-    light: number;
-    water: number;
-    img: string;
-    description: string;
-    fullDescription: string;
-  };
-  // useState concernant les listes de plantes
   const [plants, setPlants] = useState(plantList.sort((a, b) => (a.id < b.id) ? 1 : -1));
   const plantsCopied = [...plantList];
   const resetPlantsList = () => {
-    applyActiveSort([...plantsCopied], activeSort);
+    const sortedPlants = getSortedPlants([...plantsCopied], activeSort)
+    setPlants(sortedPlants);
     setFilteredPlants(plantsCopied);
   }
   const [resultNumber, setResultNumber] = useState(plantList.length);
@@ -36,57 +26,10 @@ export default function Home() {
     setResultNumber(plants.length);
   }, [plants]);
   
-  // Permet de  créer un tableau de filtres à partir d'une propriété d'un tableau de plantes
-  const createArrayOfFilterable = (elementsArray: Array<any>, keyValue: string, elementToUnshift: string, sort : boolean = false ) => {
-    const plantsElements = Array.from(new Set(elementsArray.map((plant) => plant[keyValue])));
-
-    plantsElements.unshift(elementToUnshift);
-    if (sort) {
-      plantsElements.sort((a,b) => b - a)
-    }
-
-    return plantsElements
-  }
-
-  // Permet de vérifier si un tri est actif et d'appliquer le tri à un tableau de plantes
-  const applyActiveSort = (elementsArray: Array<any>, activeSort: string) => {
-    switch (activeSort) {
-      case "Nom":
-        setPlants(elementsArray.sort((a, b) => a.name > b.name ? 1 : -1));
-        break;
-      case "Popularité":
-        setPlants(elementsArray.sort((a, b) => a.isBestSale < b.isBestSale ? 1 : -1));
-        break;
-      case "Récent":
-        setPlants(elementsArray.sort((a, b) => a.id < b.id ? 1 : -1));
-        break;
-    }
-  }
-
-  // Permet d'appliquer un filtre sur une liste de plantes par une certaine propriété
-  const applyFilter = (elementsArray: Array<any>, keyValue: string, filteredKeyValue : string | number) => {
-    switch (activeSort) {
-      case "Nom":
-        let filteredArrayName = elementsArray.filter((plant) => plant[keyValue] === filteredKeyValue);
-        return filteredArrayName = filteredArrayName.sort((a, b) => a.name > b.name ? 1 : -1);
-      case "Popularité":
-        let filteredArrayPopularity = elementsArray.filter((plant) => plant[keyValue] === filteredKeyValue);
-        return filteredArrayPopularity = filteredArrayPopularity.sort((a, b) => a.isBestSale < b.isBestSale ? 1 : -1);
-      case "Récent":
-        let filteredArrayRecent = elementsArray.filter((plant) => plant[keyValue] === filteredKeyValue);
-        return filteredArrayRecent = filteredArrayRecent.sort((a, b) => a.id < b.id ? 1 : -1);
-      default:
-        const filteredPlants = elementsArray.filter((plant) => plant[keyValue] === filteredKeyValue) 
-        return filteredPlants;
-    }
-  }
-
-  // Création des tableaux de choix de filtres par propriété
   const plantsCategories = createArrayOfFilterable(plantsCopied, 'category', 'Toutes');
   const plantsWaterNeed = createArrayOfFilterable(plantsCopied, 'water', 'Tous', true);
   const plantsLightNeed = createArrayOfFilterable(plantsCopied, 'light', 'Tous', true);
 
-  // Créations des useState liés aux filtres et au tri
   const [filterValue, setFilterValue] = useState<string | number | null>(null);
   const [filterTitle, setFilterTitle] = useState<string | null>(null);
   const [isFilterActive, setIsFilterActive] = useState<boolean>(false);
@@ -95,48 +38,42 @@ export default function Home() {
   
   // Récupère du composant DropDownFilter la clé et la valeur à partir desquels appliquer le filtre
   const handleFilter = (value: string | number, keyValue: string) => {
-      setFilterValue(value);
-      setIsFilterActive(true);
-      setKeyValue(keyValue);
-
+    setFilterValue(value);
+    setIsFilterActive(true);
+    setKeyValue(keyValue);
+  
+    let newPlants: typeof plantsCopied;
+  
     if (value === "Toutes" || value === "Tous") {
-      applyActiveSort(plantsCopied, activeSort);
-      setFilteredPlants(plantsCopied);
+      newPlants = getSortedPlants(plantsCopied, activeSort);
       setIsFilterActive(false);
-    }else{
-      switch (keyValue) {
-        case 'water':
-          const waterFiltered = applyFilter([...plantsCopied], keyValue, value);
-          setPlants(waterFiltered);
-          setFilteredPlants(waterFiltered);
-          setFilterTitle('Arrosage');
-          break;
-        case 'category':
-          const categoryFiltered = applyFilter([...plantsCopied], keyValue, value);
-          setPlants(categoryFiltered);
-          setFilteredPlants(categoryFiltered);
-          setFilterTitle('Catégories');
-          break;
-        case 'light':
-          const lightFiltered = applyFilter([...plantsCopied], keyValue, value);
-          setPlants(lightFiltered);
-          setFilteredPlants(lightFiltered);
-          setFilterTitle('Exposition');
-          break;
-        default:
-          setPlants(plantsCopied);
-          setFilteredPlants(plantsCopied);
-          break;
-      } 
+    } else {
+      const filterTitles: { [key: string]: string } = {
+        water: 'Arrosage',
+        category: 'Catégories',
+        light: 'Exposition'
+      };
+  
+      newPlants = applyFilter([...plantsCopied], keyValue, value, activeSort);
+  
+      if (filterTitles[keyValue]) {
+        setFilterTitle(filterTitles[keyValue]);
+      }
     }
-  }
+  
+    setPlants(newPlants);
+    setFilteredPlants(newPlants);
+  };
+  
   // Récupère du composant SelectSort la valeur au clique de la liste déroulante de tri
   const handleSort = (value: string) => {
     // Si un filtre a été appliqué
     if ([...filteredPlants].length > 0) {
-      applyActiveSort([...filteredPlants], value);
+      const sortedPlants = getSortedPlants([...filteredPlants], value);
+      setPlants(sortedPlants);
     } else {
-      applyActiveSort(plantsCopied, value);
+      const sortedPlants = getSortedPlants(plantsCopied, value);
+      setPlants(sortedPlants);
     }
     setActiveSort(value);
   };

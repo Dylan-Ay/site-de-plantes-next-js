@@ -1,5 +1,5 @@
 import { XMarkIcon } from "@heroicons/react/20/solid"
-import { convertNumberToText } from "@/app/utils";
+import { convertNumberToText } from "@/app/utils/general";
 import { SetStateAction } from "react";
 import { Dispatch } from "react";
 
