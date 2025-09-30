@@ -61,9 +61,9 @@ export default function Page({ params }: { params: { slug: string } }) {
         ) : (
           <div className="flex flex-wrap gap-5 justify-center">
             {plantsByCategory.slice(0,5).map((plant) => (
-              <div className="w-5/12 sm:w-4/12 md:w-3/12 lg:w-2/12 hover:opacity-75 transition-opacity flex flex-col">
+              <div className="w-5/12 sm:w-4/12 md:w-3/12 lg:w-2/12 hover:opacity-75 transition-opacity flex flex-col" key={plant.id}>
                 <a className="flex-1" href={`/plant/${plant.slug}`}>
-                  <img src={plant.img} alt={plant.name} />
+                  <img src={plant.img} alt={plant.name}/>
                 </a>
                 <a href={`/plant/${plant.slug}`}>
                   <span>{firstLetterToCapitalize(plant.name)}</span>
