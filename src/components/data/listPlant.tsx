@@ -43,7 +43,7 @@ export const plantList = [
       isBestSale: true,
       light: 3,
       water: 1,
-      img: "https://www.ferrierefleurs.com/wp-content/uploads/2023/01/Yucca-filamentosa-bicolore-Pot-de-10L-Plante-mediterraneenne-Pepiniere-Ferriere-Fleurs.jpg",
+      img: "https://florastore.com/cdn/shop/files/2057241_Productimage_01_SQ.png?v=1755335433&width=1080",
       description: "Élégante plante aux longues feuilles pointues, touche désert chic.",
       fullDescription: "Le Yucca est une plante d'intérieur robuste et attrayante, appréciée pour son apparence unique et sa facilité d'entretien. Originaire des régions arides d'Amérique du Nord et d'Amérique centrale, le Yucca appartient à la famille des Agavacées et est caractérisé par ses feuilles rigides et pointues. Le Yucca présente des feuilles étroites, en forme d'épée, qui poussent à partir d'une rosette basale. Ces feuilles peuvent varier en longueur selon les différentes espèces, certaines atteignant jusqu'à un mètre de long. La couleur des feuilles varie également, allant du vert foncé au bleu-vert, offrant ainsi une certaine diversité esthétique.Cette plante est appréciée pour sa tolérance à des conditions de faible luminosité. Elle peut s'épanouir dans des environnements intérieurs moins lumineux, ce qui en fait une excellente option pour les pièces avec peu d'éclairage naturel. Cependant, le Yucca préfère une exposition indirecte à la lumière vive. En termes d'entretien, le Yucca est connu pour sa résistance et sa capacité à survivre dans des conditions moins favorables. Il nécessite un sol bien drainé et une fréquence d'arrosage modérée. Il est important de laisser sécher le sol entre les arrosages pour éviter l'excès d'humidité, ce qui peut entraîner des problèmes de pourriture des racines."
     },
@@ -67,7 +67,7 @@ export const plantList = [
       isBestSale: false,
       light: 2,
       water: 2,
-      img: "https://t3t8k6v8.rocketcdn.me/wp-content/uploads/2018/10/geranium.jpg",
+      img: "https://arborescence.ma/storage/products/April2021/2R52rLJmoI9dI1lolspp.jpg",
       description: "Fleurs colorées, feuillage odorant, égaye jardins et balcons.",
       fullDescription: "Le Géranium est une plante vivace populaire, appréciée pour ses fleurs vives et son parfum agréable. Il existe de nombreuses variétés de géraniums, mais l'une des plus courantes est le Géranium zonal (Pelargonium x hortorum), qui est largement cultivé comme plante d'intérieur et d'extérieur. Le Géranium zonal se caractérise par ses feuilles arrondies, souvent légèrement découpées, qui dégagent un parfum caractéristique lorsqu'elles sont froissées. Les fleurs du Géranium zonal peuvent varier en couleur, allant du blanc au rose, au rouge vif et même au violet. Elles sont regroupées en grappes sur des tiges dressées au-dessus du feuillage, créant ainsi un spectacle coloré et attrayant. Cette plante est appréciée pour sa facilité de culture et sa capacité à prospérer dans diverses conditions. Les géraniums préfèrent une exposition ensoleillée, mais peuvent également tolérer une certaine ombre. Ils nécessitent un sol bien drainé et une fréquence d'arrosage régulière, en laissant sécher légèrement le sol entre chaque arrosage. Les géraniums sont également réputés pour leur résistance à la sécheresse, ce qui en fait des plantes idéales pour les jardins ou les balcons exposés à la chaleur estivale."
     },
