@@ -1,6 +1,6 @@
 
 export default function DashboardLayout({
-    children, // will be a page or nested layout
+    children,
   }: {
     children: React.ReactNode
   }) {
