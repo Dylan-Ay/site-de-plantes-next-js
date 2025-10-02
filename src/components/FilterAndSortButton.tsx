@@ -12,7 +12,7 @@ function FilterAndSortButton({setFilterSortMenuOpen, resultNumber, filterSortMen
     <div className="flex items-center md:hidden justify-between w-72 mx-auto py-3">
         <button
         type="button"
-        className="rounded-full bg-green-600 px-4 py-3 text-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 flex gap-2 text-white shadow-sm hover:bg-green-700"
+        className="rounded-full bg-green-600 px-4 py-3 text-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 flex gap-2 text-white shadow-sm"
         onClick={() => setFilterSortMenuOpen((prev: boolean) => !prev)}
       >
         {<AdjustmentsHorizontalIcon className="h-5 w-5" />}
